@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Segunda Guerra Mundial | Proyecto SMR1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* VARIABLES DE COLOR */
+        :root { 
+            --verde-militar: #4b5320; 
+            --oscuro: #121212; 
+            --blanco-hueso: #f5f5f5; 
+            --verde-claro: #8b9d77; 
+        }
+
+        /* RESETEO BÁSICO */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        /* FONDO ANIMADO CON EL GIF DEL TIGER */
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            background: url('img/tiger.gif') no-repeat center center fixed; 
+            background-size: cover; 
+            color: var(--blanco-hueso); 
+            line-height: 1.6; 
+        }
+        
+        /* ----- MENÚ DE NAVEGACIÓN MAESTRO ----- */
+        nav {
+            background-color: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(12px); 
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 3rem; 
+            border-bottom: 2px solid var(--verde-militar);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.9);
+        }
+
+        nav a {
+            color: var(--blanco-hueso);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-size: 1.1rem; 
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { 
+            color: var(--verde-claro); 
+        }
+
+        /* Animación de la línea al pasar el ratón */
+        nav a::after {
+            content: ''; 
+            position: absolute; 
+            width: 0; 
+            height: 2px; 
+            bottom: 0; 
+            left: 50%;
+            background-color: var(--verde-claro); 
+            transition: all 0.3s ease; 
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after { 
+            width: 100%; 
+        }
+        /* -------------------------------------- */
+        
+        /* CABECERA TRANSPARENTE */
+        .header-bg { 
+            padding: 150px 20px 40px; 
+            text-align: center; 
+        }
+
+        h1 { 
+            font-family: 'Oswald', sans-serif; 
+            font-size: 4rem; 
+            color: var(--verde-claro); 
+            text-transform: uppercase; 
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.9); 
+        }
+
+        /* CONTENEDOR DE CRISTAL TRANSLÚCIDO */
+        .content { 
+            max-width: 900px; 
+            margin: 20px auto 60px; 
+            padding: 50px; 
+            background: rgba(15, 15, 15, 0.75); 
+            backdrop-filter: blur(6px); 
+            border-radius: 10px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.9); 
+            border-left: 5px solid var(--verde-militar); 
+        }
+
+        /* CAJAS DE SECCIÓN DE TANQUES */
+        .section-box { 
+            margin-bottom: 50px; 
+        }
+
+        .section-box:last-child { 
+            margin-bottom: 0; 
+        }
+
+        .section-box h2 { 
+            font-family: 'Oswald', sans-serif; 
+            color: var(--verde-claro); 
+            font-size: 2.2rem; 
+            margin-bottom: 15px; 
+            border-bottom: 1px solid rgba(255,255,255,0.2); 
+            padding-bottom: 10px; 
+        }
+
+        .section-box p { 
+            font-size: 1.15rem; 
+            color: #e0e0e0; 
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.9); 
+            margin-bottom: 20px; 
+        }
+
+        .section-box img { 
+            width: 100%; 
+            max-width: 400px; 
+            height: auto; 
+            border-radius: 8px; 
+            display: block; 
+            margin: 0 auto; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.6); 
+            border: 1px solid rgba(255,255,255,0.1); 
+        }
+        
+        /* BOTÓN ROJO PARA LA SECCIÓN DE ARMAS ILEGALES */
+        .btn-peligro { 
+            display: block; 
+            width: fit-content; 
+            margin: 30px auto 0; 
+            padding: 12px 30px; 
+            background-color: #8b0000; 
+            color: white; 
+            text-decoration: none; 
+            font-family: 'Oswald', sans-serif; 
+            text-transform: uppercase; 
+            border-radius: 5px; 
+            font-size: 1.1rem; 
+            transition: all 0.3s; 
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.5); 
+        }
+
+        .btn-peligro:hover { 
+            background-color: #ff4c4c; 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 20px rgba(255, 76, 76, 0.6); 
+        }
+
+        /* BOTÓN DE VOLVER AL INICIO */
+        .btn-volver { 
+            display: block; 
+            width: 200px; 
+            margin: 40px auto 80px; 
+            text-align: center; 
+            padding: 15px; 
+            background: var(--verde-militar); 
+            color: white; 
+            text-decoration: none; 
+            font-family: 'Oswald', sans-serif; 
+            border-radius: 5px; 
+            transition: all 0.3s; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.8); 
+        }
+
+        .btn-volver:hover { 
+            background: #5d6728; 
+            transform: translateY(-3px); 
+        }
+    </style>
+</head>
+<body>
+
+        <nav>
+        <a href="index.html">Inicio</a>
+        <a href="index.html#historia">Visor de Tanques</a>
+        <a href="index.html#proyectos-banner">Proyectos</a>
+        <a href="sostenibilidad.html">Sostenibilidad</a>
+    </nav>
+
+    <div class="header-bg">
+        <h1>Segunda Guerra Mundial</h1>
+        <p style="font-size: 1.4rem; text-shadow: 2px 2px 5px #000;">La era de la Blitzkrieg y el asalto acorazado.</p>
+    </div>
+
+    <div class="content">
+        <div class="section-box">
+            <h2>Los tanques del inicio</h2>
+            <p>Al comenzar el conflicto, la doctrina había cambiado. Tanques ligeros como el <strong>Panzer I y Panzer II</strong> alemanes lideraron la "guerra relámpago" en Polonia y Francia. Sin embargo, el tanque que definió la guerra fue el <strong>T-34 soviético</strong>, que introdujo el blindaje inclinado, rebotando proyectiles y revolucionando el diseño mundial.</p>
+            <img src="img/T34.png" alt="Tanque T-34">
+        </div>
+        
+        <div class="section-box">
+            <h2>Los Cañones</h2>
+            <p>La potencia de fuego escaló rápidamente. De pequeños cañones de 37mm pasaron a monstruosidades como el mítico <strong>Cañón antiaéreo FlaK de 88 mm</strong> adaptado para los tanques pesados alemanes. Este cañón podía destruir tanques aliados a más de 2 kilómetros de distancia antes de que siquiera pudieran acercarse a disparar.</p>
+            <img src="img/Municion.png" alt="Munición y Cañones">
+        </div>
+        
+        <div class="section-box">
+            <h2>El Tanque más temible</h2>
+            <p>El <strong>Panzer VI Tiger (Tiger I)</strong> es, sin duda, la leyenda más temida. Su blindaje frontal de 100mm lo hacía casi invulnerable a los cañones de los tanques M4 Sherman aliados. Cuando los soldados aliados reportaban la presencia de un Tiger en el campo de batalla, a menudo se requería apoyo de artillería pesada o ataques aéreos para neutralizarlo.</p>
+            <img src="img/TheTiger.png" alt="Tanque Tiger I">
+        </div>
+        
+        <div class="section-box" style="border-top: 2px dashed #8b0000; padding-top: 40px; margin-top: 40px;">
+            <h2 style="color: #ff4c4c;">La crueldad de la Guerra</h2>
+            <p>La desesperación por romper las líneas defensivas llevó a la creación de vehículos especializados con propósitos aterradores. El uso de fuego líquido para calcinar tropas atrincheradas o maquinaria diseñada para despedazar el suelo demostraron un nivel de brutalidad psicológica y física extremo. Tras la guerra, la comunidad internacional tuvo que restringir severamente el uso de este tipo de armamento incendiario contra personal humano.</p>
+            <a href="armas-ilegales.html" class="btn-peligro">ARCHIVOS CLASIFICADOS: ARMAS ILEGALES</a>
+        </div>
+    </div>
+
+    <a href="index.html" class="btn-volver">VOLVER AL INICIO</a>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Evolución de los Carros de Combate | Proyecto SMR1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root { --verde-militar: #4b5320; --verde-claro: #8b9d77; --oscuro: #121212; --gris-acero: #2c2c2c; --blanco-hueso: #f5f5f5; --rojo-oscuro: #8b0000; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--oscuro); background-image: radial-gradient(var(--gris-acero) 1px, transparent 1px), radial-gradient(var(--gris-acero) 1px, transparent 1px); background-size: 40px 40px; background-position: 0 0, 20px 20px; color: var(--blanco-hueso); line-height: 1.6; }
+        nav { background-color: rgba(5, 5, 5, 0.95); backdrop-filter: blur(12px); padding: 1.2rem 2rem; position: fixed; width: 100%; top: 0; z-index: 1000; display: flex; justify-content: center; gap: 2rem; border-bottom: 2px solid var(--verde-militar); box-shadow: 0 4px 20px rgba(0,0,0,0.9); }
+        nav a { color: var(--blanco-hueso); text-decoration: none; font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 1rem; letter-spacing: 2px; position: relative; padding-bottom: 5px; transition: color 0.3s; }
+        nav a:hover { color: var(--verde-claro); }
+        nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%; background-color: var(--verde-claro); transition: all 0.3s ease; transform: translateX(-50%); }
+        nav a:hover::after { width: 100%; }
+        header { padding-top: 130px; padding-bottom: 40px; text-align: center; }
+        .title-glass { display: inline-block; padding: 30px 60px; background: rgba(20, 20, 20, 0.7); backdrop-filter: blur(8px); border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 5px solid var(--verde-militar); box-shadow: 0 20px 40px rgba(0,0,0,0.9); margin-bottom: 50px; }
+        .title-glass h1 { font-family: 'Oswald', sans-serif; font-size: 4.5rem; text-transform: uppercase; color: var(--verde-claro); text-shadow: 3px 3px 15px rgba(0,0,0,1); line-height: 1.1; }
+        .title-glass p { font-size: 1.2rem; color: #ccc; text-transform: uppercase; letter-spacing: 3px; }
+        .hero-panels { display: flex; width: 100%; height: 55vh; border-top: 4px solid var(--verde-militar); border-bottom: 4px solid var(--verde-militar); background-color: #050505; }
+        .panel { flex: 1; display: block; text-decoration: none; position: relative; overflow: hidden; border-right: 2px solid #222; transition: flex 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .panel:last-child { border-right: none; }
+        .panel:hover { flex: 1.6; }
+        .panel img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(80%) brightness(0.5); transition: all 0.6s ease; }
+        .panel:hover img { filter: grayscale(0%) brightness(1.1); transform: scale(1.05); }
+        .panel h2 { position: absolute; bottom: 30px; width: 100%; text-align: center; font-family: 'Oswald', sans-serif; font-size: 2.5rem; text-transform: uppercase; text-shadow: 2px 2px 10px rgba(0,0,0,1); color: white; transition: bottom 0.4s, color 0.4s; pointer-events: none; letter-spacing: 1px; }
+        .panel:hover h2 { bottom: 45px; color: var(--verde-claro); }
+        .selector-container { text-align: center; padding: 80px 20px 40px; }
+        #toggle-menu { display: none; }
+        .dropdown-btn { display: inline-block; background-color: var(--verde-militar); color: white; padding: 15px 50px; font-family: 'Oswald', sans-serif; font-size: 1.4rem; text-transform: uppercase; border-radius: 5px; cursor: pointer; transition: all 0.3s; box-shadow: 0 5px 15px rgba(75, 83, 32, 0.4); }
+        .dropdown-btn:hover { background-color: #5d6728; transform: translateY(-3px); }
+        .dropdown-content { max-height: 0; overflow: hidden; transition: max-height 0.8s ease-out; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 30px auto 0; }
+        #toggle-menu:checked ~ .dropdown-content { max-height: 2000px; padding: 20px 0 40px; }
+        .card-link { text-decoration: none; color: inherit; display: block; height: 100%; }
+        .card { background-color: rgba(30, 30, 30, 0.95); border-radius: 10px; padding: 20px; text-align: left; border-bottom: 4px solid var(--verde-militar); transition: all 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.5); display: flex; flex-direction: column; height: 100%; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.8); border-bottom: 4px solid var(--verde-claro); }
+        .card img { width: 100%; height: 220px; object-fit: cover; border-radius: 5px; margin-bottom: 15px; filter: contrast(1.1); }
+        .card h3 { font-family: 'Oswald', sans-serif; font-size: 1.5rem; margin-bottom: 10px; color: var(--verde-claro); }
+        .card p { flex-grow: 1; margin-bottom: 20px; }
+        .btn-leer { display: inline-block; margin-top: auto; padding: 8px 20px; background-color: #444; color: white; font-family: 'Oswald', sans-serif; text-transform: uppercase; border-radius: 3px; font-size: 0.9rem; transition: background 0.3s; text-align: center; }
+        .card:hover .btn-leer { background-color: var(--verde-militar); }
+        .proyectos-banner-container { max-width: 1200px; margin: 20px auto 60px; padding: 0 20px; }
+        .proyectos-banner { display: block; position: relative; width: 100%; height: 350px; border-radius: 12px; overflow: hidden; text-decoration: none; border: 4px solid var(--gris-acero); box-shadow: 0 15px 40px rgba(0,0,0,0.6); transition: all 0.4s ease; }
+        .proyectos-banner:hover { transform: translateY(-8px); border-color: var(--rojo-oscuro); box-shadow: 0 25px 50px rgba(139, 0, 0, 0.4); }
+        .proyectos-banner img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; filter: brightness(0.4) contrast(1.2); }
+        .proyectos-banner:hover img { transform: scale(1.05); filter: brightness(0.6) contrast(1.2); }
+        .proyectos-banner-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 90%; z-index: 2; pointer-events: none; }
+        .proyectos-banner-text h2 { font-family: 'Oswald', sans-serif; font-size: 3.8rem; color: var(--blanco-hueso); text-transform: uppercase; text-shadow: 2px 2px 15px rgba(0,0,0,1); margin-bottom: 10px; }
+        .random-gif-container { text-align: center; margin: 0 auto 60px; }
+        .military-monitor { display: inline-block; background-color: #050505; padding: 10px; border: 2px solid #333; border-radius: 8px; box-shadow: inset 0 0 15px rgba(0,0,0,1), 0 10px 20px rgba(0,0,0,0.8); position: relative; }
+        .military-monitor::before { content: ">> INTERCEPTANDO_TRANSMISION_ENEMIGA.GIF"; display: block; text-align: left; font-family: 'Courier New', Courier, monospace; color: #555; font-size: 0.8rem; margin-bottom: 8px; padding-left: 5px; }
+        .military-monitor img { width: 100%; max-width: 350px; display: block; border-radius: 4px; filter: grayscale(100%) sepia(100%) hue-rotate(60deg) contrast(1.5) brightness(0.8); }
+        .ods-tag { display: inline-block; border: 1px solid var(--verde-claro); color: var(--verde-claro); padding: 8px 20px; border-radius: 4px; font-size: 0.9rem; text-decoration: none; transition: all 0.3s; background: rgba(139, 157, 119, 0.1); }
+        .ods-tag:hover { background: var(--verde-claro); color: var(--oscuro); transform: translateY(-2px); }
+        footer { padding: 40px 20px; background-color: #0a0a0a; text-align: center; border-top: 1px solid var(--gris-acero); }
+        @media (max-width: 850px) { .hero-panels { flex-direction: column; height: 120vh; } .panel { border-right: none; border-bottom: 2px solid #000; } .title-glass { padding: 20px; } .title-glass h1 { font-size: 2.8rem; } }
+    </style>
+</head>
+<body>
+        <nav>
+        <a href="index.html">Inicio</a>
+        <a href="#historia" onclick="document.getElementById('toggle-menu').checked = true;">Visor de Tanques</a>
+        <a href="#proyectos-banner">Proyectos</a>
+        <a href="sostenibilidad.html">Sostenibilidad</a>
+    </nav>
+    <header>
+        <div class="title-glass">
+            <h1>La evolución de los carros de combate</h1>
+            <p>Selecciona una época para acceder a los archivos</p>
+        </div>
+        <div class="hero-panels">
+            <a href="primera-guerra.html" class="panel"><img src="img/Mark1.png" alt="Primera Guerra"><h2>Primera Guerra</h2></a>
+            <a href="segunda-guerra.html" class="panel"><img src="img/Tiger1.png" alt="Segunda Guerra"><h2>Segunda Guerra</h2></a>
+            <a href="actualidad.html" class="panel"><img src="img/Leopard2.png" alt="Actualidad"><h2>Actualidad</h2></a>
+        </div>
+    </header>
+
+    <section class="selector-container" id="historia">
+        <input type="checkbox" id="toggle-menu">
+        <label for="toggle-menu" class="dropdown-btn">Visor de tanques</label>
+
+        <div class="dropdown-content">
+            <a href="visor-ww1.html" class="card-link">
+                <div class="card">
+                    <img src="img/primeraguerra.png" alt="WWI">
+                    <h3>Primera guerra mundial</h3>
+                    <p>El nacimiento del tanque para cruzar trincheras.</p>
+                    <span class="btn-leer">Abrir Visor</span>
+                </div>
+            </a>
+            <a href="visor-ww2.html" class="card-link">
+                <div class="card">
+                    <img src="img/segundaguerra.png" alt="WWII">
+                    <h3>Segunda guerra mundial</h3>
+                    <p>La era del blindaje y la guerra relámpago.</p>
+                    <span class="btn-leer">Abrir Visor</span>
+                </div>
+            </a>
+            <a href="visor-actualidad.html" class="card-link">
+                <div class="card">
+                    <img src="img/actualidad.png" alt="Actualidad">
+                    <h3>Carros actuales</h3>
+                    <p>Tecnología militar de vanguardia y blindajes compuestos.</p>
+                    <span class="btn-leer">Abrir Visor</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="proyectos-banner-container" id="proyectos-banner">
+        <a href="proyectos.html" class="proyectos-banner">
+            <img src="img/portadaproyectos.jpg" alt="Proyectos">
+            <div class="proyectos-banner-text">
+                <h2>Proyectos Clasificados</h2>
+            </div>
+        </a>
+    </section>
+
+    <section class="random-gif-container">
+        <div class="military-monitor"><img src="img/random.gif" alt="Transmisión"></div>
+    </section>
+
+    <section style="max-width: 800px; margin: 0 auto 60px; text-align: center;">
+        <h2 style="font-family: 'Oswald', sans-serif; color: var(--verde-claro); font-size: 2.5rem; margin-bottom: 20px; text-transform: uppercase;">¿Cual es tu conocimiento? (Juego Python)</h2>
+        <p style="color: #ccc; margin-bottom: 20px;">Demuestra tus conocimientos en este terminal.</p>
+        <iframe src="https://trinket.io/embed/python3/78929263f5dc?outputOnly=true" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen style="border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); border: 2px solid var(--verde-militar);"></iframe>
+    </section>
+
+    <footer>
+        <a href="sostenibilidad.html" class="ods-tag">Contribuyendo a la sostenibilidad (ODS)</a> 
+        <p style="margin-top: 15px; color: #ccc;">&copy; 2026 La evolución de los carros de combate - Izan y Ander</p> 
+    </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            if(window.location.hash === '#historia') {
+                const toggle = document.getElementById('toggle-menu');
+                if(toggle) toggle.checked = true;
+            }
+        });
+    </script>
+</body>
+</html>

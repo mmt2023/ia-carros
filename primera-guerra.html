@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Primera Guerra Mundial | Proyecto SMR1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* VARIABLES DE COLOR */
+        :root { 
+            --verde-militar: #4b5320; 
+            --oscuro: #121212; 
+            --blanco-hueso: #f5f5f5; 
+            --verde-claro: #8b9d77; 
+        }
+
+        /* RESETEO BÁSICO */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        /* FONDO PRINCIPAL CON LA FOTO WW1 OSCURECIDA */
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(18, 18, 18, 0.9)), url('img/fondoww1.jpg') no-repeat center center fixed; 
+            background-size: cover;
+            color: var(--blanco-hueso); 
+            line-height: 1.6; 
+        }
+        
+        /* ----- MENÚ DE NAVEGACIÓN MAESTRO ----- */
+        nav {
+            background-color: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(12px); 
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 3rem; 
+            border-bottom: 2px solid var(--verde-militar);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.9);
+        }
+
+        nav a {
+            color: var(--blanco-hueso);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-size: 1.1rem; 
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { 
+            color: var(--verde-claro); 
+        }
+
+        /* Animación de la línea al pasar el ratón */
+        nav a::after {
+            content: ''; 
+            position: absolute; 
+            width: 0; 
+            height: 2px; 
+            bottom: 0; 
+            left: 50%;
+            background-color: var(--verde-claro); 
+            transition: all 0.3s ease; 
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after { 
+            width: 100%; 
+        }
+        /* -------------------------------------- */
+
+        /* CABECERA TRANSPARENTE */
+        .header-bg { 
+            padding: 150px 20px 40px; 
+            text-align: center; 
+        }
+
+        h1 { 
+            font-family: 'Oswald', sans-serif; 
+            font-size: 4rem; 
+            color: var(--verde-claro); 
+            text-transform: uppercase; 
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.9);
+        }
+        
+        /* CONTENEDOR DE CRISTAL TRANSLÚCIDO */
+        .content { 
+            max-width: 900px; 
+            margin: 20px auto 60px; 
+            padding: 50px; 
+            background: rgba(15, 15, 15, 0.75); 
+            backdrop-filter: blur(6px); 
+            border-radius: 10px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.9); 
+            border-left: 5px solid var(--verde-militar);
+        }
+
+        /* CAJAS DE SECCIÓN DE TANQUES */
+        .section-box { 
+            margin-bottom: 50px; 
+        }
+
+        .section-box:last-child { 
+            margin-bottom: 0; 
+        }
+
+        .section-box h2 { 
+            font-family: 'Oswald', sans-serif; 
+            color: var(--verde-claro); 
+            font-size: 2.2rem; 
+            margin-bottom: 15px; 
+            border-bottom: 1px solid rgba(255,255,255,0.2); 
+            padding-bottom: 10px;
+        }
+
+        .section-box p { 
+            font-size: 1.15rem; 
+            color: #e0e0e0; 
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.9); 
+            margin-bottom: 20px; 
+        }
+
+        /* ESTILO PARA LAS 3 IMÁGENES NUEVAS */
+        .section-box img {
+            width: 100%;
+            max-width: 450px; 
+            height: auto;
+            border-radius: 8px; 
+            display: block; 
+            margin: 0 auto; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.6); 
+            border: 1px solid rgba(255,255,255,0.1); 
+        }
+
+        /* BOTÓN DE VOLVER AL INICIO */
+        .btn-volver { 
+            display: block; 
+            width: 200px; 
+            margin: 40px auto 80px; 
+            text-align: center; 
+            padding: 15px; 
+            background: var(--verde-militar); 
+            color: white; 
+            text-decoration: none; 
+            font-family: 'Oswald', sans-serif; 
+            border-radius: 5px; 
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+        }
+
+        .btn-volver:hover {
+            background: #5d6728; 
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+
+        <nav>
+        <a href="index.html">Inicio</a>
+        <a href="index.html#historia">Visor de Tanques</a>
+        <a href="index.html#proyectos-banner">Proyectos</a>
+        <a href="sostenibilidad.html">Sostenibilidad</a>
+    </nav>
+
+    <div class="header-bg">
+        <h1>Primera Guerra Mundial</h1>
+        <p style="font-size: 1.4rem; text-shadow: 2px 2px 5px #000;">El nacimiento del terror en las trincheras.</p>
+    </div>
+
+    <div class="content">
+        <div class="section-box">
+            <h2>El primer tanque inventado</h2>
+            <p>El desarrollo del tanque comenzó en Gran Bretaña. El primer prototipo operativo fue apodado <strong>"Little Willie"</strong> en 1915. Sin embargo, el primero en entrar en combate real fue el <strong>Mark I</strong> en la Batalla del Somme (1916). Tenía forma de romboide para no caer en las trincheras y revolucionó el campo de batalla al ser inmune al fuego de ametralladora.</p>
+            <img src="img/LittleWillie.jpg" alt="Prototipo Little Willie">
+        </div>
+        
+        <div class="section-box">
+            <h2>Los Cañones</h2>
+            <p>Los primeros tanques británicos (versión "Macho") estaban armados con <strong>cañones navales Hotchkiss de 6 libras (57 mm)</strong> montados en barbetas laterales. Estos cañones estaban diseñados originalmente para destruir pequeñas lanchas torpederas, pero resultaron ideales para volar nidos de ametralladoras alemanes y búnkeres de tierra.</p>
+            <img src="img/municion2.jpg" alt="Munición y cañones de la WWI">
+        </div>
+        
+        <div class="section-box">
+            <h2>El Tanque más temible</h2>
+            <p>El <strong>A7V Sturmpanzerwagen</strong> alemán fue una auténtica fortaleza rodante. Aunque solo se fabricaron 20 unidades, su impacto psicológico fue brutal. Estaba fuertemente blindado, contaba con una enorme tripulación de hasta 18 hombres, llevaba un cañón frontal de 57mm y hasta seis ametralladoras, convirtiéndose en un monstruo imparable en combate cercano.</p>
+            <img src="img/A7V.jpg" alt="Tanque alemán A7V">
+        </div>
+    </div>
+
+    <a href="index.html" class="btn-volver">VOLVER AL INICIO</a>
+
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planos que nunca vieron la luz | Proyecto SMR1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* VARIABLES DE COLOR */
+        :root {
+            --verde-militar: #4b5320;
+            --verde-claro: #8b9d77;
+            --oscuro: #121212;
+            --gris-acero: #2c2c2c;
+            --blanco-hueso: #f5f5f5;
+            --rojo-oscuro: #8b0000;
+        }
+
+        /* RESETEO BÁSICO */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        /* FONDO ANIMADO CON EL GIF DE PROYECTOS */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('img/proyectos.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--blanco-hueso);
+            line-height: 1.6;
+        }
+
+        /* ----- MENÚ DE NAVEGACIÓN MAESTRO ----- */
+        nav {
+            background-color: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(12px); 
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 2rem; 
+            border-bottom: 2px solid var(--verde-militar);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.9);
+        }
+
+        nav a {
+            color: var(--blanco-hueso);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-size: 1.1rem; 
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { 
+            color: var(--verde-claro); 
+        }
+
+        nav a::after {
+            content: ''; 
+            position: absolute; 
+            width: 0; 
+            height: 2px; 
+            bottom: 0; 
+            left: 50%;
+            background-color: var(--verde-claro); 
+            transition: all 0.3s ease; 
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after { 
+            width: 100%; 
+        }
+        /* -------------------------------------- */
+
+        /* CABECERA LIMPIA (Para que se vea el GIF de fondo) */
+        header {
+            padding: 150px 20px 60px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4rem;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            color: var(--verde-claro);
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.9);
+        }
+
+        .subtitle {
+            max-width: 1000px; 
+            margin: 0 auto; 
+            color: #e0e0e0; 
+            font-size: 1.4rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+        }
+
+        /* DISEÑO DE LAS TARJETAS TRANSLÚCIDAS */
+        .prototypes-container {
+            display: flex;
+            flex-direction: column;
+            gap: 60px; 
+            width: 95%; 
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .prototype-card {
+            background: rgba(15, 15, 15, 0.75); 
+            backdrop-filter: blur(8px); 
+            border-radius: 15px; 
+            display: flex; 
+            align-items: center; 
+            min-height: 75vh; 
+            border-left: 6px solid var(--rojo-oscuro); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8); 
+        }
+
+        .prototype-card:nth-child(even) {
+            flex-direction: row-reverse;
+            border-left: none;
+            border-right: 6px solid var(--rojo-oscuro);
+        }
+
+        /* FOTOS DE LOS PROTOTIPOS */
+        .prototype-card img {
+            width: 45%; 
+            height: auto;
+            max-height: 600px;
+            margin: 2.5%; 
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7); 
+            filter: contrast(1.1); 
+        }
+
+        /* TEXTO DENTRO DE LA TARJETA */
+        .card-content {
+            width: 50%;
+            padding: 60px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+        }
+
+        .card-content h2 {
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 25px;
+            color: var(--blanco-hueso);
+            font-size: 4rem; 
+            line-height: 1.1;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+        }
+
+        .card-content p {
+            color: #e0e0e0;
+            font-size: 1.5rem; 
+            line-height: 1.8;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        /* PIE DE PÁGINA */
+        footer {
+            padding: 40px 20px;
+            background-color: #0a0a0a;
+            text-align: center;
+            border-top: 1px solid var(--gris-acero);
+        }
+
+        .ods-tag {
+            display: inline-block;
+            border: 1px solid var(--verde-claro);
+            color: var(--verde-claro);
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            background: rgba(139, 157, 119, 0.1);
+        }
+
+        .ods-tag:hover { 
+            background: var(--verde-claro); 
+            color: var(--oscuro); 
+            transform: translateY(-2px); 
+        }
+
+        /* RESPONSIVE PARA MÓVILES */
+        @media (max-width: 1024px) {
+            .prototype-card, .prototype-card:nth-child(even) {
+                flex-direction: column; 
+                border-left: 6px solid var(--rojo-oscuro);
+                border-right: none;
+            }
+            .prototype-card img {
+                width: 90%;
+                margin-top: 30px;
+            }
+            .card-content {
+                width: 100%;
+                padding: 40px;
+            }
+            .card-content h2 { font-size: 2.8rem; }
+            .card-content p { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+        <nav>
+        <a href="index.html">Inicio</a>
+        <a href="index.html#historia">Visor de Tanques</a>
+        <a href="index.html#proyectos-banner">Proyectos</a>
+        <a href="sostenibilidad.html">Sostenibilidad</a>
+    </nav>
+
+    <header>
+        <h1>Planos que nunca vieron la luz</h1>
+        <p class="subtitle">
+            Durante la Segunda Guerra Mundial, la obsesión por la superioridad acorazada llevó a los ingenieros a diseñar máquinas de proporciones titánicas. La mayoría de estos monstruos de acero no pasaron de la mesa de dibujo o de la fase de prototipo debido a su inviabilidad técnica, su coste absurdo o el avance de la guerra.
+        </p>
+    </header>
+
+    <section class="prototypes-container">
+        
+        <div class="prototype-card">
+            <img src="img/maus.png" alt="Panzer VIII Maus">
+            <div class="card-content">
+                <h2>Panzer VIII Maus</h2>
+                <p>El tanque superpesado alemán. Con 188 toneladas, es el vehículo blindado más pesado jamás construido. Solo se terminaron dos prototipos antes de que la guerra acabara. Era tan pesado que destrozaba carreteras y no podía cruzar puentes normales. Su blindaje era impenetrable para la mayoría de las armas de la época, pero su excesivo peso lo convertía en un objetivo lento y poco práctico.</p>
+            </div>
+        </div>
+
+        <div class="prototype-card">
+            <img src="img/p1000.png" alt="Landkreuzer P. 1000 Ratte">
+            <div class="card-content">
+                <h2>Landkreuzer P. 1000 Ratte</h2>
+                <p>Una auténtica locura naval en tierra firme. Hitler aprobó el diseño de este "crucero terrestre" de 1.000 toneladas, equipado con cañones navales propios de un acorazado de bolsillo. El proyecto fue cancelado por Albert Speer en 1943 al darse cuenta de que sería un blanco inmenso, lento y requeriría una tripulación de más de 40 hombres para operar sus sistemas.</p>
+            </div>
+        </div>
+
+        <div class="prototype-card">
+            <img src="img/kv5.png" alt="Tanque Soviético KV-5">
+            <div class="card-content">
+                <h2>Tanque Soviético KV-5</h2>
+                <p>La respuesta soviética a los blindados alemanes pesados. Este diseño de la serie Kliment Voroshilov pesaba unas 100 toneladas y tenía un diseño asimétrico con múltiples torretas operadas por diferentes artilleros. El proyecto fue cancelado apresuradamente cuando la fábrica de Leningrado tuvo que ser evacuada de emergencia por el avance de las tropas alemanas en 1941.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <a href="sostenibilidad.html" class="ods-tag">Contribuyendo a la sostenibilidad (ODS)</a>
+        <p style="margin-top: 15px; color: #ccc;">&copy; 2026 La evolución de los carros de combate - Izan y Ander</p>
+    </footer>
+
+</body>
+</html>
